@@ -1,0 +1,17 @@
+<section class="card">
+    <nav class="card__menu">
+        <ul class="card__list">
+            <li *ngFor="let card of cards" class="card__item">
+                <a class="card__link" href="">
+                    <article class="card__main">
+                        <h1  class="card__text">{{card.title}}</h1>
+                        <picture class="card__picture">
+                            <img class="card__img" [src] = "card.imageSrc" alt="{{card.title}}">
+                        </picture>
+                        <p class="card__decription">{{card.description}}</p>
+                    </article>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</section>

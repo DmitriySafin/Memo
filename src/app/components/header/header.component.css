@@ -1,0 +1,22 @@
+.header{
+    padding: 20px;
+    border-bottom: 1px solid #cccccc;
+    z-index: 1000;
+}
+
+.header__list{
+    display: grid;
+    grid-template-columns: repeat(4,1fr);
+    justify-items: center;
+}
+
+.header__link{
+    font-size: clamp(0.8125rem, 0.3944rem + 1.784vw, 2rem);
+    text-decoration: none;
+    color: #000000;
+    transition: 0.4s linear;
+}
+
+.header__link:hover{
+    opacity: 0.4;
+}
