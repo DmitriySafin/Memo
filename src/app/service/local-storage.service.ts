@@ -15,13 +15,17 @@ export interface CardItem{
   description: string,
   id: number
 }
+
+export interface cardNews extends CardItem {
+number: number;
+}
 @Injectable({
   providedIn: 'root'
 })
 
 export class LocalStorageService {
   cardMain: CardItem[];
-
+  cardNews: cardNews[];
   constructor() {
     this.cardMain = [
       {
@@ -67,11 +71,13 @@ export class LocalStorageService {
         id: 7
       },
     ];
+    this.cardNews = [];
   }
 
   setItem() {
     // Сохраняем массив cardMain в localStorage
     localStorage.setItem('cardMain', JSON.stringify(this.cardMain));
+    localStorage.setItem('cardNews', JSON.stringify(this.cardNews))
   }
 
   getItems() {

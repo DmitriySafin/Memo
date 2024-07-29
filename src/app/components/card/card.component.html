@@ -6,7 +6,7 @@
                     <article class="card__main">
                         <h1  class="card__text">{{card.title}}</h1>
                         <picture class="card__picture">
-                            <img class="card__img" [src] = "card.imageSrc" alt="{{card.title}}">
+                            <img loading="lazy" class="card__img" [src] = "card.imageSrc" alt="{{card.title}}">
                         </picture>
                         <p class="card__decription">{{card.description}}</p>
                     </article>
