@@ -22,6 +22,11 @@
     transition: 0.4s linear;
 }
 
+.header__link.active {
+    font-weight: bold;
+    color: blue; 
+}
+
 .header__link:hover{
     opacity: 0.4;
 }

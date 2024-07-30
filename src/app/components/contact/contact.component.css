@@ -1,0 +1,24 @@
+.contact__menu {
+    padding: 16px;
+  }
+  
+  .contact__item {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+    padding: 10px;
+    border-radius: 8px;
+  }
+  
+  .contact__card {
+    display: flex;
+  }
+  
+  .contact__picture img {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+  }
+  
+  .contact__btns {
+    margin-top: 20px;
+  }

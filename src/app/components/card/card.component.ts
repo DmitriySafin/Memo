@@ -10,7 +10,7 @@ export class CardComponent   {
 cards: CardItem[] = [];
 
 constructor(localStorageService: LocalStorageService){
-  this.cards = localStorageService.getItems()
+  this.cards = localStorageService.getItemsCard()
 }
 
 }

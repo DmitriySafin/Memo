@@ -1,1 +1,34 @@
-<p>contact works!</p>
+<section class="contact">
+    <nav class="contact__menu">
+        <ul class="contact__list">
+            <li *ngFor="let card of cards" class="conatct__item">
+                <article class="contact__card">
+                    <div class="contact__card--left">
+                        <picture class="contact__picture">
+                            <img [src]="card.image" alt="">
+                        </picture>
+                        <nav class="contact__user-info developper">
+                            <ul class="developper__menu">
+                                <li class="developper__name">
+                                    <span class="developper__name-txt">{{card.name}}</span>
+                                </li>
+                                <li class="developper__lastname">
+                                    <span class="developper__lastname-txt">{{card.lastName}}</span>
+                                </li>
+                                <li class="developper__post">
+                                    <span class="developper__post-txt">{{card.post}}</span>
+                                </li>
+                                <li class="developper__tel">
+                                    <a class="developper__link" href="tel:">{{card.tel}}</a>
+                                </li>
+                            </ul>
+                        </nav>
+                        </div>
+                </article>
+            </li>
+        </ul>
+    </nav>
+    <div class="contact__btns">
+        <button class="contact__add">Добавить нового сотрудника</button>
+    </div>
+</section>

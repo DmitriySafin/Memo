@@ -74,13 +74,12 @@ export class LocalStorageService {
     this.cardNews = [];
   }
 
-  setItem() {
+  setItemCard() {
     // Сохраняем массив cardMain в localStorage
     localStorage.setItem('cardMain', JSON.stringify(this.cardMain));
-    localStorage.setItem('cardNews', JSON.stringify(this.cardNews))
   }
 
-  getItems() {
+  getItemsCard() {
     // Получаем item из localStorage и преобразуем обратно в массив объектов
     const items = localStorage.getItem('cardMain');
     return items ? JSON.parse(items) : [];

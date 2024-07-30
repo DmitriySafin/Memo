@@ -12,10 +12,10 @@ export class AppComponent implements OnInit  {
   constructor(private localStorageService: LocalStorageService) { }
 
   ngOnInit(): void {
-    const items = this.localStorageService.getItems();
+    const items = this.localStorageService.getItemsCard();
     if (items.length === 0) {
-      this.localStorageService.setItem(); // Сохраняем только если данных нет
+      this.localStorageService.setItemCard(); // Сохраняем только если данных нет
     }
-    this.card = this.localStorageService.getItems(); // Загружаем данные из local storage
+    this.card = this.localStorageService.getItemsCard(); // Загружаем данные из local storage
   }
 }
