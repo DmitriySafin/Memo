@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormGroup } from '@angular/forms';
 
 export interface IdeveloperCard {
   name: string;
@@ -17,7 +18,6 @@ export interface IdeveloperCard {
 export class ContactComponent {
   cards: IdeveloperCard[] = [];
   newCard: IdeveloperCard = { name: '', lastName: '', tel: 0, image: '', post: '', id: 0 };
-
   constructor() {
     this.loadContacts();
     this.startCard(); // Инициализируем карточки при создании компонента
@@ -46,6 +46,11 @@ export class ContactComponent {
   saveContacts() {
     localStorage.setItem('contacts', JSON.stringify(this.cards));
   }
+
+  addCard(){
+    
+  }
+
 
   
  

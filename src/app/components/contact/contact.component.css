@@ -1,7 +1,13 @@
 .contact__menu {
     padding: 16px;
   }
-  
+
+  .contact__list{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
   .contact__item {
     border: 1px solid #ccc;
     margin-bottom: 10px;
@@ -11,6 +17,12 @@
   
   .contact__card {
     display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #fff;
+    border-radius: 8px; 
+    padding: 20px; 
+    inline-size: 100%;
   }
   
   .contact__picture img {

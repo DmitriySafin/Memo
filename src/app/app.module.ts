@@ -17,7 +17,6 @@ import { FooterComponent } from './components/footer/footer.component';
   declarations: [
     AppComponent,
     CardComponent,
-    ContactComponent,
     NewsComponent,
     GraphComponent,
     HeaderComponent,
