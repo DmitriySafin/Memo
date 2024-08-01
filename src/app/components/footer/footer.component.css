@@ -8,3 +8,7 @@
     justify-items: center;
     margin-block-start: 20px;
 }
+
+.footer__logo{
+    inline-size: 150px;
+}

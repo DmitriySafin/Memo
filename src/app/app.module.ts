@@ -10,7 +10,7 @@ import { HeaderComponent } from './components/header/header.component';
 import { ShareModule } from './share/share.module';
 import { AppRoutingModule } from 'app-routing.module';
 import { CoreModule } from './service/service.module';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
 
 @NgModule({
@@ -20,14 +20,14 @@ import { FooterComponent } from './components/footer/footer.component';
     NewsComponent,
     GraphComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ContactComponent
   ],
   imports: [
     BrowserModule,
-    ShareModule,
     AppRoutingModule,
     CoreModule,
-    FormsModule
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
