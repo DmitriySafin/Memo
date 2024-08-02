@@ -1,45 +1,56 @@
 <section class="contact">
     <nav class="contact__menu">
         <ul class="contact__list">
-            <li *ngFor="let card of cards" class="conatct__item">
+            <li *ngFor="let card of cards" class="contact__item">
                 <article class="contact__card">
                     <div class="contact__card--left">
                         <picture class="contact__picture">
                             <img [src]="card.image" alt="">
                         </picture>
                     </div>
-                        <nav class="contact__user-info developper">
-                            <ul class="developper__menu">
-                                <li class="developper__name">
-                                    <span class="developper__name-txt">{{card.name}}</span>
-                                </li>
-                                <li class="developper__lastname">
-                                    <span class="developper__lastname-txt">{{card.lastName}}</span>
-                                </li>
-                                <li class="developper__post">
-                                    <span class="developper__post-txt">{{card.post}}</span>
-                                </li>
-                                <li class="developper__tel">
-                                    <a class="developper__link" href="tel:">{{card.tel}}</a>
-                                </li>
-                            </ul>
-                        </nav>
+                    <nav class="contact__user-info developper">
+                        <ul class="developper__menu">
+                            <li class="developper__name">
+                                <span class="developper__name-txt">{{card.name}}</span>
+                            </li>
+                            <li class="developper__lastname">
+                                <span class="developper__lastname-txt">{{card.lastName}}</span>
+                            </li>
+                            <li class="developper__post">
+                                <span class="developper__post-txt">{{card.post}}</span>
+                            </li>
+                            <li class="developper__tel">
+                                <a class="developper__link" href="tel:{{card.tel}}">{{card.tel}}</a>
+                            </li>
+                        </ul>
+                    </nav>
                 </article>
             </li>
         </ul>
     </nav>
-    <div class="contact__btns">
-        <button class="contact__add">Добавить нового сотрудника</button>
+    <div class="btns">
+        <button class="btn btn-add contact__add" (click)="addCard()">Добавить нового сотрудника</button>
+        <button class="btn btn-close contact__close" (click)="closeCard()">Закрыть</button>
     </div>
-    <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+    <!-- Сеня, эту форму обрабатывать не нужно -->
+    <form *ngIf="openFormBtn" [formGroup]="myForm" (ngSubmit)="submitForm()" class="form-container">
+
         <label for="name">Введите имя:</label>
-        <input id="name" type="text" formControlName ="userName">
-        @if(myForm.controls["userName"].invalid && myForm.controls["userName"].touched){
-            <div class="alert">Не указано имя</div>
-        }
-        <label for="lastName">Введите Фамилию</label>
-        <input id="lastName" type="text" formControlName = "lastName">
-        <label for="phone">Введите телефон</label>
-        <input type="text" >
+        <input id="name" type="text" formControlName="userName">
+        <div class="alert" *ngIf="myForm.controls['userName'].invalid && myForm.controls['userName'].touched">Не указано имя</div>
+    
+        <label for="lastName">Введите Фамилию:</label>
+        <input id="lastName" type="text" formControlName="userLastName">
+        <div class="alert" *ngIf="myForm.controls['userLastName'].invalid && myForm.controls['userLastName'].touched">Не указана Фамилия</div>
+    
+        <label for="phone">Введите телефон:</label>
+        <input type="text" formControlName="userPhone">
+        <div class="alert" *ngIf="myForm.controls['userPhone'].invalid && myForm.controls['userPhone'].touched">Не указан телефон</div>
+    
+        <label for="email">Введите почту:</label>
+        <input id="email" type="text" formControlName="userEmail">
+        <div class="alert" *ngIf="myForm.controls['userEmail'].invalid && myForm.controls['userEmail'].touched">Не указана почта</div>
+    
+        <button [disabled]="myForm.invalid" class="btn-add contact__add">ОК</button>
     </form>
 </section>

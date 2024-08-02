@@ -1,36 +1,155 @@
+/* Стили для контейнера с карточками */
 .contact__menu {
-    padding: 16px;
-  }
+  max-width: 800px; 
+  margin: 0 auto; 
+}
 
-  .contact__list{
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
+.contact__list {
+  list-style: none; 
+  padding: 0; 
+}
 
-  .contact__item {
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
-    padding: 10px;
-    border-radius: 8px;
-  }
-  
-  .contact__card {
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    background-color: #fff;
-    border-radius: 8px; 
-    padding: 20px; 
-    inline-size: 100%;
-  }
-  
-  .contact__picture img {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-  }
-  
-  .contact__btns {
-    margin-top: 20px;
-  }
+.contact__item {
+  margin-bottom: 20px;
+}
+
+/* Стили для карточки */
+.contact__card {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background-color: #ffffff; 
+  border: 1px solid #ccc; 
+  border-radius: 5px; 
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); 
+  overflow: hidden; 
+}
+
+.contact__card--left {
+  flex: 0 0 100px;
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+}
+
+.contact__picture img {
+  width: 80px; 
+  height: 80px; 
+  border-radius: 50%; 
+  object-fit: cover; 
+}
+
+.contact__user-info {
+  padding: 15px; 
+}
+
+.developper__menu {
+  list-style: none; 
+  padding: 0; 
+  margin: 0;
+}
+
+/* Стили для элементов списка информации */
+.developper__name,
+.developper__lastname,
+.developper__post,
+.developper__tel {
+  margin-bottom: 5px; 
+  font-size: 14px; 
+}
+
+/* Стили для ссылок */
+.developper__link {
+  text-decoration: none; 
+  color: #007BFF;
+}
+
+.developper__link:hover {
+  text-decoration: underline;
+}
+  /* Общие стили кнопок */
+.btn {
+  background-color: #f0f0f0; 
+  color: #333; 
+  border: 1px solid #ccc; 
+  padding: 10px 15px; 
+  border-radius: 5px; 
+  font-size: 16px; 
+  cursor: pointer; 
+  transition: background-color 0.3s, border-color 0.3s; 
+  margin-right: 10px;
+}
+
+.btn:hover {
+  background-color: #e0e0e0; 
+  border-color: #aaa; 
+}
+
+.btn-close {
+  background-color: #f2f2f2; 
+}
+
+.btn-close:hover {
+  background-color: #e0e0e0; 
+}
+
+/* Отключенная (disabled) кнопка */
+.btn:disabled {
+  background-color: #ccc;
+  cursor: not-allowed; 
+  opacity: 0.7; 
+}
+
+  /* Основные стили для формы */
+.form-container {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  max-width: 400px;
+  margin: 20px auto; 
+  font-family: Arial, sans-serif;
+}
+
+label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+input[type="text"] {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+input[type="text"]:invalid {
+  border-color: red; 
+}
+
+.alert {
+  color: red;
+  font-size: 14px;
+  margin-top: -5px;
+  margin-bottom: 10px;
+}
+
+.btn-add {
+  background-color: #4CAF50; 
+  color: white;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+  border-radius: 5px;
+  font-size: 16px;
+}
+
+.btn-add:disabled {
+  background-color: #ccc;
+}
+
+.contact__add {
+  margin-top: 15px;
+}

@@ -21,7 +21,6 @@ import { FooterComponent } from './components/footer/footer.component';
     GraphComponent,
     HeaderComponent,
     FooterComponent,
-    ContactComponent
   ],
   imports: [
     BrowserModule,
