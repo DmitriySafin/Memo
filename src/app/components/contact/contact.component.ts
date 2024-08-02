@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { ShareModule } from 'src/app/share/share.module';
 
 export interface IdeveloperCard {
   name: string;
@@ -13,11 +14,20 @@ export interface IdeveloperCard {
 @Component({
   selector: 'app-contact',
   templateUrl: './contact.component.html',
-  styleUrls: ['./contact.component.css']
+  styleUrls: ['./contact.component.css'],
 })
 export class ContactComponent {
   cards: IdeveloperCard[] = [];
   newCard: IdeveloperCard = { name: '', lastName: '', tel: 0, image: '', post: '', id: 0 };
+  myForm: FormGroup = new FormGroup({
+    "userName": new FormControl("", Validators.required),
+    "userEmail": new FormControl("", [
+                Validators.required, 
+                Validators.email
+    ]),
+    "userPhone": new FormControl("", Validators.pattern("[0-9]{10}")),
+    "userLastName": new FormControl("", Validators.required),
+  });
   constructor() {
     this.loadContacts();
     this.startCard(); // Инициализируем карточки при создании компонента
@@ -51,7 +61,10 @@ export class ContactComponent {
     
   }
 
-
+  submitForm(){
+    console.log("work");
+    
+  }
   
  
 }

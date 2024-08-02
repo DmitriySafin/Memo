@@ -31,7 +31,15 @@
     <div class="contact__btns">
         <button class="contact__add">Добавить нового сотрудника</button>
     </div>
-    <form action="">
-        
+    <form [formGroup]="myForm" (ngSubmit)="submitForm()">
+        <label for="name">Введите имя:</label>
+        <input id="name" type="text" formControlName ="userName">
+        @if(myForm.controls["userName"].invalid && myForm.controls["userName"].touched){
+            <div class="alert">Не указано имя</div>
+        }
+        <label for="lastName">Введите Фамилию</label>
+        <input id="lastName" type="text" formControlName = "lastName">
+        <label for="phone">Введите телефон</label>
+        <input type="text" >
     </form>
 </section>
