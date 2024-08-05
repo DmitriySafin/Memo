@@ -1,1 +1,30 @@
-<p>news works!</p>
+<!-- news.component.html -->
+<section class="news">
+  <aside class="news__sidebar sidebar">
+    <h2 class="sidebar__title">Блок новостей отдела</h2>
+    <ul class="sidebar__item">
+      <li class="sidebar__list">
+        <a class="sidebar__link" [routerLink]="['/news/asu']">Новости отдела АСУ</a>
+      </li>
+      <li class="sidebar__list">
+        <a class="sidebar__link" [routerLink]="['/news/marketing']">Новости отдела Маркетинга</a>
+      </li>
+      <li class="sidebar__list">
+        <a class="sidebar__link" [routerLink]="['/news/sbyt']">Новости отдела Сбыта</a>
+      </li>
+      <li class="sidebar__list">
+        <a class="sidebar__link" [routerLink]="['/news/sborka']">Новости отдела Сборка</a>
+      </li>
+      <li class="sidebar__list">
+        <a class="sidebar__link" [routerLink]="['/news/sertificate']">Новости отдела Сертификации</a>
+      </li>
+      <li class="sidebar__list">
+        <a class="sidebar__link" [routerLink]="['/news/kontrol']">Новости Контроль</a>
+      </li>
+    </ul>
+  </aside>
+  
+  <div class="news__content">
+    <router-outlet></router-outlet>
+  </div>
+</section>

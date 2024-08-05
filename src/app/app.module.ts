@@ -12,6 +12,12 @@ import { AppRoutingModule } from 'app-routing.module';
 import { CoreModule } from './service/service.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FooterComponent } from './components/footer/footer.component';
+import { NewsAsuComponent } from './components/news/news-asu/news-asu.component';
+import { NewsMarketingComponent } from './components/news/news-marketing/news-marketing.component';
+import { NewsSbytComponent } from './components/news/news-sbyt/news-sbyt.component';
+import { NewsSertComponent } from './components/news/news-sert/news-sert.component';
+import { NewsKontrolComponent } from './components/news/news-kontrol/news-kontrol.component';
+import { NewsSborComponent } from './components/news/news-sbor/news-sbor.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +27,12 @@ import { FooterComponent } from './components/footer/footer.component';
     GraphComponent,
     HeaderComponent,
     FooterComponent,
+    NewsAsuComponent,
+    NewsMarketingComponent,
+    NewsSbytComponent,
+    NewsSertComponent,
+    NewsKontrolComponent,
+    NewsSborComponent,
   ],
   imports: [
     BrowserModule,

@@ -11,19 +11,24 @@
                     <nav class="contact__user-info developper">
                         <ul class="developper__menu">
                             <li class="developper__name">
-                                <span class="developper__name-txt">{{card.name}}</span>
+                                <span class="developper__name-txt link-txt">{{card.name}} {{card.lastName}}</span>
                             </li>
                             <li class="developper__lastname">
-                                <span class="developper__lastname-txt">{{card.lastName}}</span>
+                                <span class="developper__lastname-txt link-txt">{{card.position}}</span>
                             </li>
                             <li class="developper__post">
-                                <span class="developper__post-txt">{{card.post}}</span>
+                                <span class="developper__post-txt link-txt">Отдел {{card.post}}</span>
                             </li>
                             <li class="developper__tel">
-                                <a class="developper__link" href="tel:{{card.tel}}">{{card.tel}}</a>
+                                <a class="developper__link link-txt" href="tel:{{card.tel}}">{{card.tel}}</a>
+                            </li>
+                            <li class="developper__tel">
+                                <a class="developper__link link-txt">{{card.email}}</a>
                             </li>
                         </ul>
                     </nav>
+                    <button class="btn-group" (click)="editCard(card)"><img  class="contact__edit btns-img" src="../../../assets/images/icon-edit.png" alt="Иконка редактирования"></button>
+                    <button class="btn-group" (click)="deleteCard(card.id)"><img class="contact__delete btns-img" src="../../../assets/images/delete-icon.png" alt="Иконка удаления"></button>
                 </article>
             </li>
         </ul>
@@ -43,6 +48,10 @@
         <input id="lastName" type="text" formControlName="userLastName">
         <div class="alert" *ngIf="myForm.controls['userLastName'].invalid && myForm.controls['userLastName'].touched">Не указана Фамилия</div>
     
+        <label for="name">Введите должность:</label>
+        <input id="name" type="text" formControlName="userPosition">
+        <div class="alert" *ngIf="myForm.controls['userPosition'].invalid && myForm.controls['userPosition'].touched">Не указана должность</div>
+    
         <label for="phone">Введите телефон:</label>
         <input type="text" formControlName="userPhone">
         <div class="alert" *ngIf="myForm.controls['userPhone'].invalid && myForm.controls['userPhone'].touched">Не указан телефон</div>
@@ -50,7 +59,11 @@
         <label for="email">Введите почту:</label>
         <input id="email" type="text" formControlName="userEmail">
         <div class="alert" *ngIf="myForm.controls['userEmail'].invalid && myForm.controls['userEmail'].touched">Не указана почта</div>
+
+        <label for="image">Выберите изображение:</label>
+        <input type="file" id="image" (change)="onFileSelected($event)" accept="image/*">
+        <div *ngIf="imageError" class="alert">Ошибка при загрузке изображения!</div>
     
-        <button [disabled]="myForm.invalid" class="btn-add contact__add">ОК</button>
+        <button (click)="submitForm()" [disabled]="myForm.invalid" class="btn-add contact__add">ОК</button>
     </form>
 </section>

@@ -1,11 +1,5 @@
 import { Component } from '@angular/core';
-import {
-  FormControl,
-  FormGroup,
-  ReactiveFormsModule,
-  Validators,
-} from '@angular/forms';
-import { ShareModule } from 'src/app/share/share.module';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 export interface IdeveloperCard {
   name: string;
@@ -14,6 +8,8 @@ export interface IdeveloperCard {
   image: string;
   post: string;
   id: number;
+  email: string;
+  position: string;
 }
 
 @Component({
@@ -23,24 +19,20 @@ export interface IdeveloperCard {
 })
 export class ContactComponent {
   cards: IdeveloperCard[] = [];
-  newCard: IdeveloperCard = {
-    name: '',
-    lastName: '',
-    tel: 0,
-    image: '',
-    post: '',
-    id: 0,
-  };
   myForm: FormGroup = new FormGroup({
     userName: new FormControl('', Validators.required),
     userEmail: new FormControl('', [Validators.required, Validators.email]),
     userPhone: new FormControl('', Validators.pattern('[0-9]{11}')),
     userLastName: new FormControl('', Validators.required),
+    userPosition: new FormControl('', Validators.required),
   });
+  imageError: boolean = false;
+  selectedImage: string = '';
   openFormBtn: boolean = false;
+
   constructor() {
     this.loadContacts();
-    this.startCard(); // Инициализируем карточки при создании компонента
+    this.startCard();
   }
 
   loadContacts() {
@@ -55,46 +47,75 @@ export class ContactComponent {
       this.cards = [
         {
           name: 'Дмитрий',
+          email: 'd.safin@fonb.ru',
+          position: 'Систмный администратор',
           lastName: 'Сафин',
           tel: 8922049942,
-          image: '',
+          image: '../../../assets/images/logo.png',
           post: 'АСУ',
           id: 1,
         },
         {
           name: 'Алексей',
+          email: 'a.ostrovsky@fonb.ru',
+          position: 'Программист Электронные накладные',
           lastName: 'Островский',
           tel: 8922049942,
-          image: '',
+          image: '../../../assets/images/logo.png',
           post: 'АСУ',
           id: 2,
         },
         {
           name: 'Маргарита',
+          email: 'm.chikurova@fonb.ru',
+          position: 'Программист по обороту товра',
           lastName: 'Чикурова',
           tel: 8922049942,
-          image: '',
+          image: '../../../assets/images/logo.png',
           post: 'АСУ',
           id: 3,
         },
         {
           name: 'Валерий',
+          email: 'v.bar@fonb.ru',
+          position: 'Программист по Navision',
           lastName: 'Баруткин',
           tel: 8922049942,
-          image: '',
+          image: '../../../assets/images/logo.png',
           post: 'АСУ',
           id: 4,
         },
         {
           name: 'Игорь',
+          email: 'i.oshurkov@fonb.ru',
+          position: 'Руководитель отдела',
           lastName: 'Ошурков',
           tel: 8922049942,
-          image: '',
+          image: '../../../assets/images/logo.png',
           post: 'АСУ',
           id: 5,
         },
       ];
       this.saveContacts();
+    }
+  }
+
+  onFileSelected(event: Event): void {
+    const target = event.target as HTMLInputElement;
+    if (target.files && target.files.length > 0) {
+      const file = target.files[0];
+      const reader = new FileReader();
+
+      reader.onload = (e: any) => {
+        this.selectedImage = e.target.result;
+        this.imageError = false;
+      };
+
+      reader.onerror = () => {
+        this.imageError = true;
+      };
+
+      reader.readAsDataURL(file);
     }
   }
 
@@ -106,16 +127,47 @@ export class ContactComponent {
     this.openFormBtn = true;
   }
 
-  closeCard(){
+  closeCard() {
     this.openFormBtn = false;
+    this.myForm.reset();
   }
 
   submitForm() {
-    console.log(this.myForm);
+    if (this.myForm.valid) {
+      const newCard: IdeveloperCard = {
+        name: this.myForm.value.userName,
+        lastName: this.myForm.value.userLastName,
+        tel: +this.myForm.value.userPhone,
+        email: this.myForm.value.userEmail,
+        image: this.selectedImage,
+        post: 'Асу',
+        position: this.myForm.value.userPosition,
+        id:
+          this.cards.length > 0
+            ? Math.max(...this.cards.map((card) => card.id)) + 1
+            : 1,
+      };
+      this.cards.push(newCard);
+      this.saveContacts();
+      this.myForm.reset();
+      this.selectedImage = '';
+      this.openFormBtn = false;
+    }
+  }
+
+  deleteCard(id: number) {
+    this.cards = this.cards.filter((card) => card.id !== id);
+    this.saveContacts();
+  }
+
+  editCard(card: IdeveloperCard) {
+    this.myForm.patchValue({
+      userName: card.name,
+      userLastName: card.lastName,
+      userPhone: card.tel,
+      userEmail: card.email,
+      userPosition: card.position,
+    });
+    this.openFormBtn = true; // Открываем форму
   }
 }
-
-// 1. Создать 5 готовых карточек и загрузить их в локальное хранилище с возможностью удалить
-// 2. Добавить возможность добавление новой карточки где открывается форма с именем и т.д
-// 3. Добавить возможность удалить карточку
-// 4. Добавить возможность редактировать карточку
